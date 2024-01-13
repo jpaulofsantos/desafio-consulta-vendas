@@ -8,9 +8,8 @@ import com.devsuperior.dsmeta.projection.SaleSellerProjection;
 public class SaleSellerDTO {
 
 	private Long id;
-	private Double amount;
 	private LocalDate date;
-
+	private Double amount;
 	private String sellerName;
 	
 	public SaleSellerDTO(Long id, Double amount, LocalDate date, String sellerName) {
@@ -22,8 +21,8 @@ public class SaleSellerDTO {
 	
 	public SaleSellerDTO(Sale entity) {
 		id = entity.getId();
-		amount = entity.getAmount();
 		date = entity.getDate();
+		amount = entity.getAmount();
 		sellerName = entity.getSeller().getName();
 	}
 

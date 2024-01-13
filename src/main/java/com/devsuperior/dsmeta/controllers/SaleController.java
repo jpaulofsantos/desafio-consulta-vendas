@@ -27,7 +27,7 @@ public class SaleController {
 		return ResponseEntity.ok(dto);
 	}
 
-	/*@GetMapping(value = "/report")
+	@GetMapping(value = "/report")
 	public ResponseEntity<Page<SaleSellerDTO>> getReport(
 			@RequestParam(value = "minDate", defaultValue = "") String dateMin,
 			@RequestParam(value = "maxDate", defaultValue = "")String dateFin,
@@ -36,19 +36,8 @@ public class SaleController {
 		Page<SaleSellerDTO> result = service.searchSaleSeller(dateMin, dateFin, name, pageable);
 
 		return ResponseEntity.ok(result);
-	}*/
-
-	@GetMapping(value = "/report")
-	public ResponseEntity<Page<SaleSellerDTO>> getReport(
-			@RequestParam(value = "minDate", defaultValue = "") String dateMin,
-			@RequestParam(value = "maxDate", defaultValue = "")String dateFin,
-			@RequestParam(value = "name", defaultValue = "") String name,
-			Pageable pageable) {
-		Page<SaleSellerProjection> result = service.searchSaleSellerProjection(dateMin, dateFin, name, pageable);
-		Page<SaleSellerDTO> result2 = result.map(x-> new SaleSellerDTO(x));
-
-		return ResponseEntity.ok(result2);
 	}
+
 
 	@GetMapping(value = "/summary")
 	public ResponseEntity<List<SaleSummaryDTO>> getSummary(
