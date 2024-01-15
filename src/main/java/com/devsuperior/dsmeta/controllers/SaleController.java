@@ -47,4 +47,16 @@ public class SaleController {
 		List<SaleSummaryDTO> result = service.searchSellerSummary(dateMin, dateFin);
 		return ResponseEntity.ok(result);
 	}
+
+	@GetMapping(value = "/reports")
+	public ResponseEntity<Page<SaleSellerDTO>> getReports(
+				@RequestParam(value = "minDate", defaultValue = "") String dateMin,
+				@RequestParam(value = "maxDate", defaultValue = "")String dateFin,
+				@RequestParam(value = "name", defaultValue = "") String name,
+				Pageable pageable) {
+			Page<SaleSellerProjection> result = service.searchSaleSellerProjection(dateMin, dateFin, name, pageable);
+			Page<SaleSellerDTO> result2 = result.map(x-> new SaleSellerDTO(x));
+
+			return ResponseEntity.ok(result2);
+		}
 }

@@ -12,6 +12,6 @@ public interface SaleSellerProjection {
 
     LocalDate getDate();
 
-    Seller getSeller();
+    String getSellerName();
 
 }

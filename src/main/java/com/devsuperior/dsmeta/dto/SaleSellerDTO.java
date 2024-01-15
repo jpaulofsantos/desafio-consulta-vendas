@@ -30,7 +30,7 @@ public class SaleSellerDTO {
 		this.id = saleSellerProjection.getId();
 		this.amount = saleSellerProjection.getAmount();
 		this.date = saleSellerProjection.getDate();
-		this.sellerName = saleSellerProjection.getSeller().getName();
+		this.sellerName = saleSellerProjection.getSellerName();
 	}
 
 	public Long getId() {

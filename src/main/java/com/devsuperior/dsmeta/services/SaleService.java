@@ -67,4 +67,23 @@ public class SaleService {
 
 		return result;
 	}
+
+	public Page<SaleSellerProjection> searchSaleSellerProjection(String dateMin, String dateFin, String name, Pageable pageable) {
+		LocalDate today = LocalDate.ofInstant(Instant.now(), ZoneId.systemDefault());
+		LocalDate min;
+		if (dateMin.equals("")) {
+			min = today.minusYears(1L);
+		} else {
+			min = LocalDate.parse(dateMin);
+		}
+		LocalDate fin;
+		if (dateFin.equals("")) {
+			fin = today;
+		} else {
+			fin = LocalDate.parse(dateFin);
+		}
+		Page<SaleSellerProjection> result = repository.searchSaleSellerProjection(min, fin, name, pageable);
+
+		return result;
+	}
 }
